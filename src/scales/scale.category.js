@@ -21,7 +21,7 @@ module.exports = function(Chart) {
 		// Implement this so that
 		determineDataLimits: function() {
 			var me = this;
-			var labels = me.getLabels(); 
+			var labels = me.getLabels();
 			me.minIndex = 0;
 			me.maxIndex = labels.length - 1;
 			var findIndex;
@@ -66,6 +66,10 @@ module.exports = function(Chart) {
 			}
 
 			if (me.isHorizontal()) {
+
+				// 将paddingLeft设为0,防止y轴坐标值出现外边距
+        me.paddingLeft = 0;
+
 				var innerWidth = me.width - (me.paddingLeft + me.paddingRight);
 				var valueWidth = innerWidth / offsetAmt;
 				var widthOffset = (valueWidth * (index - me.minIndex)) + me.paddingLeft;
