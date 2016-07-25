@@ -680,12 +680,20 @@ module.exports = function(Chart) {
 					var label = itemToDraw.label;
 					if (helpers.isArray(label)) {
 						for (var i = 0, y = 0; i < label.length; ++i) {
+							if (i===0) {
+                context.fillStyle = "#1ab092";
+              } else if (i===1) {
+                context.fillStyle = "#dcdcdc";
+              }
 							// We just make sure the multiline element is a string here..
 							context.fillText('' + label[i], 0, y);
 							// apply same lineSpacing as calculated @ L#320
 							y += (tickFontSize * 1.5);
 						}
 					} else {
+						if (isHorizontal) {
+							context.fillStyle = "#1ab092";
+						}
 						context.fillText(label, 0, 0);
 					}
 					context.restore();
